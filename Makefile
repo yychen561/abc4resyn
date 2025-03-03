@@ -5,8 +5,10 @@ AR   := ar
 LD   := $(CXX)
 
 MSG_PREFIX ?=
-ABCSRC ?= .
+ABCSRC ?= /app/abc
 VPATH = $(ABCSRC)
+
+$(info Current directory: $(shell pwd))
 
 $(info $(MSG_PREFIX)Using CC=$(CC))
 $(info $(MSG_PREFIX)Using CXX=$(CXX))
@@ -34,7 +36,8 @@ MODULES := \
 	src/proof/pdr src/proof/abs src/proof/live src/proof/ssc src/proof/int \
 	src/proof/cec src/proof/acec src/proof/dch src/proof/fraig src/proof/fra src/proof/ssw \
 	src/aig/aig src/aig/saig src/aig/gia src/aig/ioa src/aig/ivy src/aig/hop \
-	src/aig/miniaig
+	src/aig/miniaig \
+	src/node_logic
 
 all: $(PROG)
 default: $(PROG)
@@ -55,7 +58,7 @@ endif
 
 ARCHFLAGS := $(ARCHFLAGS)
 
-OPTFLAGS  ?= -g -O
+OPTFLAGS  ?= -g
 
 CFLAGS    += -Wall -Wno-unused-function -Wno-write-strings -Wno-sign-compare $(ARCHFLAGS)
 ifneq ($(findstring arm,$(shell uname -m)),)
@@ -67,6 +70,8 @@ ifdef ABC_USE_NAMESPACE
   CFLAGS += -DABC_NAMESPACE=$(ABC_USE_NAMESPACE) -fpermissive -x c++
   CC := $(CXX)
   $(info $(MSG_PREFIX)Compiling in namespace $(ABC_NAMESPACE))
+else
+  $(info $(MSG_PREFIX)Compiling without namespace)
 endif
 
 # compile CUDD with ABC
@@ -167,11 +172,19 @@ OBJ := \
 	$(patsubst %.c, %.o,  $(filter %.c, $(SRC)))  \
 	$(patsubst %.y, %.o,  $(filter %.y, $(SRC)))
 
+
+
 LIBOBJ := $(filter-out src/base/main/main.o,$(OBJ))
 
 DEP := $(OBJ:.o=.d)
 
+
+preprocess:
+	$(CC) -E $(INCLUDES) $(CFLAGS) /app/abc/src/base/main/print_Frame.c -o /app/abc/src/base/main/print_Frame.i
+
 # implicit rules
+
+$(info $(MSG_PREFIX)Using =$(OPTFLAGS))
 
 %.o: %.c
 	@mkdir -p $(dir $@)
@@ -221,12 +234,18 @@ clean:
 tags:
 	etags `find . -type f -regex '.*\.\(c\|h\)'`
 
+$(info $(MSG_PREFIX)Using LDFLAGS=$(LDFLAGS))
+$(info $(MSG_PREFIX)Using LIBS=$(LIBS))
+$(info $(MSG_PREFIX)Using CFLAGS=$(CFLAGS))
+$(info $(MSG_PREFIX)Using CXXFLAGS=$(CXXFLAGS))
+
+
 $(PROG): $(OBJ)
 	@echo "$(MSG_PREFIX)\`\` Building binary:" $(notdir $@)
 	$(VERBOSE)$(LD) -o $@ $^ $(LDFLAGS) $(LIBS)
 
 lib$(PROG).a: $(LIBOBJ)
-	@echo "$(MSG_PREFIX)\`\` Linking:" $(notdir $@)
+	@echo "$(MSG_PREFIX)\'\' Linking:" $(notdir $@)
 	$(VERBOSE)$(AR) rsv $@ $?
 
 lib$(PROG).so: $(LIBOBJ)

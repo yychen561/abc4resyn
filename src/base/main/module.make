@@ -4,4 +4,5 @@ SRC +=  src/base/main/main.c \
     src/base/main/mainLib.c \
     src/base/main/mainReal.c \
     src/base/main/libSupport.c \
-    src/base/main/mainUtils.c
+    src/base/main/mainUtils.c \
+    src/base/main/print_Frame.c

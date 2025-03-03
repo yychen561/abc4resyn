@@ -209,7 +209,7 @@ extern ABC_DLL void            Abc_UtilsPrintHello( Abc_Frame_t * pAbc );
 extern ABC_DLL void            Abc_UtilsPrintUsage( Abc_Frame_t * pAbc, char * ProgName );
 extern ABC_DLL void            Abc_UtilsSource( Abc_Frame_t * pAbc );
 
-
+extern ABC_DLL void            print_frame( Abc_Frame_t * pAbc );
 
 ABC_NAMESPACE_HEADER_END
 

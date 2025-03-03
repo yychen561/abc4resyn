@@ -1,0 +1,7 @@
+# Benchmark "MiniAig" written by ABC on Sun Mar  2 12:22:50 2025
+.model MiniAig
+.inputs pi0 pi1
+.outputs po0 po1
+.gate NAND2xp33_ASAP7_75t_R     A=pi0 B=pi1 Y=po0
+.gate XNOR2x2_ASAP7_75t_R       A=pi0 B=pi1 Y=po1
+.end

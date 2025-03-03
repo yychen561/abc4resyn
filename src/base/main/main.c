@@ -8,5 +8,5 @@ ABC_NAMESPACE_IMPL_END
 
 int main(int argc, char *argv[])
 {
-   return ABC_NAMESPACE_PREFIX Abc_RealMain(argc, argv);
+      return ABC_NAMESPACE_PREFIX Abc_RealMain(argc, argv);
 }

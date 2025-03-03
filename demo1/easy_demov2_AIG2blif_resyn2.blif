@@ -1,0 +1,7 @@
+# Benchmark "test" written by ABC on Tue Jan 21 21:17:28 2025
+.model test
+.inputs i1 i2 i3 i4
+.outputs o1
+.names i4 o1
+1 1
+.end

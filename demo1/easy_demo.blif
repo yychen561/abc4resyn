@@ -1,0 +1,12 @@
+# Benchmark "i10" written by ABC on Sun Jan 19 15:07:55 2025
+.model test
+.inputs i1 i2 i3 i4
+.outputs o1
+.names i1 i2 w1
+11 0
+00 0
+.names w1 i3 w2
+10 1
+.names w2 i4 o1
+00 0
+.end
