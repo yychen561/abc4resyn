@@ -1,0 +1,73 @@
+Executing command "read i10.aig".
+--------------------------------
+Executing command "read ./node_lib/asap7sc7p5t_ALL_RVT_FF_nldm_201020.lib".
+Library "asap7sc7p5t_ALL_RVT_FF_nldm_201020" from "./node_lib/asap7sc7p5t_ALL_RVT_FF_nldm_201020.lib" has 169 cells (0 skipped: 0 seq; 0 tri-state; 0 no func; 0 dont_use).  Time =     1.37 sec
+Warning: Detected 2 multi-output gates (for example, "FAx1_ASAP7_75t_R").
+--------------------------------
+Executing command "map".
+--------------------------------
+Executing command "print_stats".
+[1;37mi10                           :[0m i/o =  257/  224  lat =    0  nd =  1544  edge =   4242  area =115.45  delay =367.52  lev = 22
+
+
+Executing command "balance".
+--------------------------------
+Executing command "map".
+--------------------------------
+Executing command "print_stats".
+[1;37mi10                           :[0m i/o =  257/  224  lat =    0  nd =  1688  edge =   4850  area =128.36  delay =269.27  lev = 17
+--------------------------------
+
+
+Executing command "balance; rewrite -l; refactor -l; balance; rewrite -l; rewrite -lz; balance; refactor -lz; rewrite -lz; balance".
+--------------------------------
+Executing command "map".
+--------------------------------
+Executing command "print_stats".
+[1;37mi10                           :[0m i/o =  257/  224  lat =    0  nd =  1408  edge =   3795  area =101.93  delay =266.07  lev = 18
+--------------------------------
+Executing command "cec i10.aig demo_resyn1.blif".
+Networks are equivalent.  Time =     0.66 sec
+--------------------------------
+Executing command "balance; rewrite -l; rewrite -lz; balance; rewrite -lz; balance".
+--------------------------------
+Executing command "map".
+--------------------------------
+Executing command "write_blif demo_resyn2.blif".
+--------------------------------
+Executing command "print_stats".
+[1;37mi10                           :[0m i/o =  257/  224  lat =    0  nd =  1351  edge =   3658  area =98.65  delay =273.18  lev = 18
+--------------------------------
+Executing command "cec i10.aig demo_resyn2.blif".
+Networks are equivalent.  Time =     0.74 sec
+--------------------------------
+Executing command "balance; rewrite -l; refactor -l; balance; rewrite -l; rewrite -lz; balance; refactor -lz; rewrite -lz; balance".
+--------------------------------
+Executing command "map".
+--------------------------------
+Executing command "write_blif demo_resyn3.blif".
+--------------------------------
+Executing command "print_stats".
+[1;37mi10                           :[0m i/o =  257/  224  lat =    0  nd =  1360  edge =   3660  area =98.94  delay =274.91  lev = 18
+--------------------------------
+Executing command "cec i10.aig demo_resyn3.blif".
+Networks are equivalent.  Time =     0.61 sec
+--------------------------------
+read =   0.00 sec   
+readlib =   1.39 sec   
+
+MapOrigin =   0.55 sec   
+VerOrigin =   0.64 sec   
+
+MapBalan =   0.43 sec   
+VerBalan =   0.71 sec   
+
+Resyn1 =   0.52 sec   
+VerResyn1 =   0.67 sec   
+
+Resyn2 =   0.38 sec   
+VerResyn2 =   0.75 sec   
+
+Resyn3 =   0.44 sec   
+VerResyn3 =   0.62 sec   
+

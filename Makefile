@@ -5,7 +5,7 @@ AR   := ar
 LD   := $(CXX)
 
 MSG_PREFIX ?=
-ABCSRC ?= /app/abc
+ABCSRC ?= /app/sizer/abc
 VPATH = $(ABCSRC)
 
 $(info Current directory: $(shell pwd))

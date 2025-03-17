@@ -188,7 +188,7 @@ NodeFuncMap nodeFuncMap[] = {
 
 };
 
-int NodeName2func(Mini_Aig_t *p, char *name, int * Ptr, int Ptr_len)
+int NodeName2func(Mini_Aig_t *p,const char *name, int * Ptr, int Ptr_len)
 {
     for (int i = 0; i < sizeof(nodeFuncMap) / sizeof(NodeFuncMap); i++) {
         if (strcmp(nodeFuncMap[i].name, name) == 0) {
