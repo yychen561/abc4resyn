@@ -166,6 +166,8 @@ GARBAGE := core core.* *.stackdump ./tags $(PROG) arch_flags
 
 include $(patsubst %, $(ABCSRC)/%/module.make, $(MODULES))
 
+$(info $(MSG_PREFIX)Using SRC=$(SRC)) # SRC is added by including module.make in line 167
+
 OBJ := \
 	$(patsubst %.cc, %.o, $(filter %.cc, $(SRC))) \
 	$(patsubst %.cpp, %.o, $(filter %.cpp, $(SRC))) \
